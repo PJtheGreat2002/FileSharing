@@ -1,0 +1,122 @@
+<!-- Homepage -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FileShare</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        background-color: rgb(164, 154, 174);
+        font-size: 20px;
+      }
+      .wrapper {
+        width: 700px;
+        margin: 0 auto;
+        background-color: rgb(121, 174, 137);
+        padding: 10px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        margin-top: 100px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+      /* body {
+        background-color: #f8f8f8;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .wrapper {
+        max-width: 700px;
+        margin: 100px auto;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 40px;
+      }
+
+      form {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 20px;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+      }
+
+      input[type="file"],
+      input[type="password"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+
+      button[type="submit"] {
+        background-color: #0d6efd;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0c5bce;
+      }
+
+      a {
+        color: #0d6efd;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      } */
+    </style>
+  </head>
+  <body>
+    <% if (locals.fileLink != null) { %>
+    <div style="margin-bottom: 1rem">
+      Your file is uploaded!
+      <br />
+      Link:<a href="<%= locals.fileLink %>"><%= locals.fileLink %></a>
+      <button style="grid-column: span 2" type="submit">
+        <a
+          href="https://mail.google.com/mail/u/0/#inbox?compose=new"
+          target="_blank"
+          >Send Email</a
+        >
+      </button>
+    </div>
+    <% } %>
+    <div class="wrapper">
+      <form
+        action="/upload"
+        method="post"
+        style="
+          display: grid;
+          gap: 0.5rem;
+          grid-template-columns: auto 1fr;
+          max-width: 500px;
+          margin: 0 auto;
+        "
+        enctype="multipart/form-data"
+      >
+        <label for="file">File:</label>
+        <input type="file" id="file" name="file" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+        <button style="grid-column: span 2" type="submit">SUBMIT</button>
+      </form>
+    </div>
+  </body>
+</html>
