@@ -25,62 +25,6 @@
           rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
           rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
       }
-      /* body {
-        background-color: #f8f8f8;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      .wrapper {
-        max-width: 700px;
-        margin: 100px auto;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        padding: 40px;
-      }
-
-      form {
-        display: grid;
-        grid-template-columns: 100px 1fr;
-        gap: 20px;
-      }
-
-      label {
-        display: flex;
-        align-items: center;
-      }
-
-      input[type="file"],
-      input[type="password"] {
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        font-size: 16px;
-      }
-
-      button[type="submit"] {
-        background-color: #0d6efd;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      button[type="submit"]:hover {
-        background-color: #0c5bce;
-      }
-
-      a {
-        color: #0d6efd;
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      } */
     </style>
   </head>
   <body>
@@ -88,14 +32,21 @@
     <div style="margin-bottom: 1rem">
       Your file is uploaded!
       <br />
+      <form onsubmit="sendEmail(event)">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <input type="text" value="<%= locals.fileLink %>" id="fileLink" name="fileLink" style="display: none;" />      
+        <button type="submit">Send email</button>
+      </form>
+      <br>
       Link:<a href="<%= locals.fileLink %>"><%= locals.fileLink %></a>
-      <button style="grid-column: span 2" type="submit">
+      <!-- <button style="grid-column: span 2" type="submit">
         <a
-          href="https://mail.google.com/mail/u/0/#inbox?compose=new"
+          href="mailto:vanshchinda@gmail.com?body=AUnimeshbhdwas"
           target="_blank"
           >Send Email</a
         >
-      </button>
+      </button> -->
     </div>
     <% } %>
     <div class="wrapper">
@@ -119,4 +70,16 @@
       </form>
     </div>
   </body>
+  <script>
+    function sendEmail(event, fileLink) {
+      event.preventDefault(); // prevent the form from submitting normally
+    
+      const emailAddress = document.getElementById('email').value;
+      const emailBody = document.getElementById('fileLink').value;
+      const mailtoLink = `mailto:${emailAddress}?body=${encodeURIComponent(emailBody)}`;
+    
+      window.open(mailtoLink, "_blank");
+    }
+    </script>
+  <!-- href="https://mail.google.com/mail/u/0/#inbox?compose=new" -->
 </html>
