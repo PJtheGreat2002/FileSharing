@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
