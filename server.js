@@ -3,9 +3,6 @@ const multer = require("multer")
 const mongoose = require("mongoose")
 const bcrypt = require("bcrypt")
 const File = require("./models/File")
-
-
-
 const express = require("express")
 const app = express()
 app.use(express.urlencoded({ extended: true }))
@@ -36,9 +33,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   res.render("index", { fileLink: `${req.headers.origin}/file/${file.id}` })
 })
 
-
 app.route("/file/:id").get(handleDownload).post(handleDownload)
-
 
 async function handleDownload(req, res) {
   const file = await File.findById(req.params.id)
@@ -63,7 +58,6 @@ async function handleDownload(req, res) {
 }
 
 app.listen(process.env.PORT)
-
 
 //npm run devStart
 //express mongoose multer ejs bcrypt dotenv nodemon

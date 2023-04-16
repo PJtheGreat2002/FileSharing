@@ -7,13 +7,14 @@ const Main = () => {
   };
 
   return (
-    <div className={styles.main_container}>
+    <div className={styles.mainContainer}>
       <nav className={styles.navbar}>
         <h1>SecureSend</h1>
         <button className={styles.white_btn} onClick={handleLogout}>
           Logout
         </button>
       </nav>
+      <iframe src="http://localhost:3050/" > </iframe>
     </div>
   );
 };
