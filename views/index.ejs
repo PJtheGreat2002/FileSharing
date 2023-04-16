@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="style.css" />
     <style>
       body {
-        background-color: rgb(164, 154, 174);
+        background-color: rgb(255, 255, 255);
         font-size: 20px;
       }
       .wrapper {
         width: 700px;
         margin: 0 auto;
-        background-color: rgb(121, 174, 137);
+        background-color: #3bb19b;
         padding: 10px;
         padding-top: 40px;
         padding-bottom: 40px;
@@ -28,27 +28,7 @@
     </style>
   </head>
   <body>
-    <% if (locals.fileLink != null) { %>
-    <div style="margin-bottom: 1rem">
-      Your file is uploaded!
-      <br />
-      <form onsubmit="sendEmail(event)">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <input type="text" value="<%= locals.fileLink %>" id="fileLink" name="fileLink" style="display: none;" />      
-        <button type="submit">Send email</button>
-      </form>
-      <br>
-      Link:<a href="<%= locals.fileLink %>"><%= locals.fileLink %></a>
-      <!-- <button style="grid-column: span 2" type="submit">
-        <a
-          href="mailto:vanshchinda@gmail.com?body=AUnimeshbhdwas"
-          target="_blank"
-          >Send Email</a
-        >
-      </button> -->
-    </div>
-    <% } %>
+    
     <div class="wrapper">
       <form
         action="/upload"
@@ -69,6 +49,39 @@
         <button style="grid-column: span 2" type="submit">SUBMIT</button>
       </form>
     </div>
+    <br><br>
+    <center>
+    <% if (locals.fileLink != null) { %>
+      <div style="margin-bottom: 1rem;
+      width: 700px;
+        margin: 0 auto;
+        background-color: #3bb19b;
+        padding: 10px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        margin-bottom: 100px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+        Your file is uploaded!
+        <br />
+        <form onsubmit="sendEmail(event)">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <input type="text" value="<%= locals.fileLink %>" id="fileLink" name="fileLink" style="display: none;" />      
+          <button type="submit">Send email</button>
+        </form>
+        <br>
+        Link:<a href="<%= locals.fileLink %>"><%= locals.fileLink %></a>
+        <!-- <button style="grid-column: span 2" type="submit">
+          <a
+            href="mailto:vanshchinda@gmail.com?body=AUnimeshbhdwas"
+            target="_blank"
+            >Send Email</a
+          >
+        </button> -->
+      </center></div>
+      <% } %>
   </body>
   <script>
     function sendEmail(event, fileLink) {
